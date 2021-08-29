@@ -7,10 +7,12 @@
 
 @section('content')
 <div class="container">
+
     <h1>Editar Estudiante</h1>
     <form>
        <h1>Hola</h1>
     </form>
+
 </div>
 @stop
 

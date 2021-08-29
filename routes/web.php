@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\CarreraController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
@@ -24,6 +24,7 @@ Route::get('/', function () {
 
     return view('auth.login');
     });
+Route::resource('carrera', CarreraController::class);
 
 Route::resource('estudiante', EstudianteController::class)->middleware('auth');
 

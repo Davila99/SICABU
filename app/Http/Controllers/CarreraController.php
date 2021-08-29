@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Carrera;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        //
+        $datos['carreras'] = Carrera::paginate(10);
+        return view('carrera/index', $datos);
     }
 
     /**
@@ -24,7 +26,7 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        //
+        return view('carrera/create');
     }
 
     /**
@@ -35,7 +37,9 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->except('_token');
+        Carrera::insert($datos);
+        return redirect('carrera/')->with('mensaje', 'Carrera agregado con exito');
     }
 
     /**
@@ -55,9 +59,10 @@ class CarreraController extends Controller
      * @param  \App\Models\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carrera $carrera)
+    public function edit($id)
     {
-        //
+        $datos = Carrera::findOrFail($id);
+        return view('carrera/edit', compact('datos'));
     }
 
     /**
@@ -67,9 +72,15 @@ class CarreraController extends Controller
      * @param  \App\Models\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carrera $carrera)
+    public function update(Request $request, $id)
     {
-        //
+
+        $datos = request()->except(['_token', '_method']);
+
+        Carrera::where('id', '=', $id)->update($datos);
+
+        $datos = Carrera::findOrFail($id);
+        return view('carrera.edit', compact('datos'));
     }
 
     /**
@@ -78,8 +89,9 @@ class CarreraController extends Controller
      * @param  \App\Models\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Carrera $carrera)
+    public function destroy($id)
     {
-        //
+        Carrera::destroy($id);
+        return redirect('carrera/')->with('mensaje', 'Carrera eliminada con exito');
     }
 }

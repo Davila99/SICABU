@@ -1,4 +1,4 @@
-{{--  <h1>{{ $titulo }} Estudiante</h1>  --}}
+{{--  <h1>{{ $titulo }} Carrera</h1>  --}}
 
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
@@ -9,35 +9,14 @@
         </ul>
     </div>
 @endif
-<div class="form-group">
 
-    <label for="avatar">Foto:</label><br>
-    @if (isset($datos->foto))
-        <img src="{{ asset('storage') . '/' . $datos->foto }}" width="100" class="rounded float-start" alt="">
-    @endif
-</div>
-<br>
-<input type="file" id="foto" name="foto" value=""><br><br>
 <div class="form-group">
-    <label for="nombre">Nombre:</label><br>
-    <input type="text" class="form-control" id="nombre" name="nombre"
-        value="{{ isset($datos->nombre) ? $datos->nombre : old('nombre') }}"><br>
+    <label for="descripcion">Nombre de la Carrera:</label><br>
+    <input type="text" class="form-control" id="descripcion" name="descripcion"
+        value="{{ isset($datos->descripcion) ? $datos->descripcion : old('descripcion') }}"><br>
 </div>
-<div class="form-group">
-    <label for="apellido">Apellido:</label><br>
-    <input type="text" class="form-control" id="apellido" name="apellido"
-        value="{{ isset($datos->apellido) ? $datos->apellido : old('apellido')}}"><br>
-</div>
-<div class="form-group">
-    <label for="correo">Email:</label><br>
-    <input type="email" class="form-control" id="correo" name="correo"
-        value="{{ isset($datos->correo) ? $datos->correo : old('correo') }}"><br>
-</div>
-<div class="form-group">
-    <label for="telefono">Telefono:</label><br>
-    <input type="text" class="form-control" id="telefono" name="telefono"
-        value="{{ isset($datos->telefono) ? $datos->telefono : old('telefono') }}"><br>
-</div>
+
+
 
 <input type="submit" value="Guardar" class="btn btn-success">
-<button type="button" class="btn btn-secondary"><a href="{{ url('estudiante/') }}"> Regresar </a></button>
+<button type="button" class="btn btn-secondary"><a href="{{ url('carrera/') }}"> Regresar </a></button>
