@@ -19,7 +19,9 @@ class CreateEstudiantesTable extends Migration
             $table->string('apellido');
             $table->string('correo');
             $table->string('telefono');
-            $table->string('foto');
+            $table->integer('carrera_id')->foreign('carrera_id')
+            ->references('id')->on('carreras')
+            ->onDelete('set null');
             $table->timestamps();
         });
     }

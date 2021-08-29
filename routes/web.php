@@ -25,11 +25,25 @@ Route::get('/', function () {
     return view('auth.login');
     });
 
+Route::resource('estudiante', EstudianteController::class)->middleware('auth');
+
+
 Auth::routes(['register'=>false, 'reset'=>false]);
+Route::get('/home', [EstudianteController::class,'index'])->name('home');
+Route::group(['middeleware' => 'auth'], function() {
 
-Route::resource('estudiante', EstudianteController::class)->middleware('auth');; //esta parte hace referecia a la carpeta de recursos donde tenemos todos los blades
+    Route::get('/home', [EstudianteController::class,'index'])->name('home');
 
-Route::get('estudiantes/index',[EstudianteController::class,'index'])->name('index');
+});
+
+
+// Route::resource('estudiante', EstudianteController::class)->middleware('auth');; //esta parte hace referecia a la carpeta de recursos donde tenemos todos los blades
+
+// Route::get('estudiantes/index',[EstudianteController::class,'index'])->name('index');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-

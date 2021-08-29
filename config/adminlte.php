@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -239,7 +239,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Busqueda',
         ],
         [
             'text' => 'blog',
@@ -249,6 +249,7 @@ return [
         [
             'text' => 'Dashboard',
             'route'  => 'home',
+            'icon'   => 'fas fa-fw fa-home',
         ],
         [
             'text'        => 'pages',

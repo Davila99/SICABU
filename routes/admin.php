@@ -6,3 +6,4 @@ use App\Http\Controllers\AdminHomeController;
 
 Route::get('', [AdminHomeController::class, 'index']);
 
+
