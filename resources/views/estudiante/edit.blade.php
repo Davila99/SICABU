@@ -8,4 +8,5 @@
             @include('estudiante.form')
         </form>
     </div>
+
 @endsection

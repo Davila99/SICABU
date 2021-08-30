@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\CarreraController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\TurnoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +26,14 @@ Route::get('/', function () {
 
     return view('auth.login');
     });
-Route::resource('carrera', CarreraController::class);
+
+Route::resource('carrera', CarreraController::class)->middleware('auth');
 
 Route::resource('estudiante', EstudianteController::class)->middleware('auth');
 
+Route::resource('turno', TurnoController::class)->middleware('auth');
+
+Route::resource('actividad', ActividadController::class)->middleware('auth');
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 Route::get('/home', [EstudianteController::class,'index'])->name('home');

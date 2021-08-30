@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrera;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,7 @@ class EstudianteController extends Controller
         $datos['estudiantes'] = Estudiante::query()
             ->with(['carrera'])
             ->orderBy('nombre', 'asc')
-            ->paginate(2);
+            ->paginate(3);
 
         return view('estudiante/index', $datos);
     }
@@ -30,7 +31,8 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        return view('estudiante/create');
+        $carreras = Carrera::all();
+        return view('estudiante/create',compact('carreras'));
     }
 
     /**

@@ -47,7 +47,7 @@
                         <td>{{ $estudiante->apellido }}</td>
                         <td>{{ $estudiante->correo }}</td>
                         <td>{{ $estudiante->telefono }}</td>
-                        <td>{{ $estudiante->carrera->nombre }}</td>
+                        <td>{{ $estudiante->carrera->descripcion }}</td>
                         <td><a href="{{ url('/estudiante/' . $estudiante->id . '/edit') }}" class="btn btn-info">
                                 Editar </a>|
                             <form action="{{ url('/estudiante/' . $estudiante->id) }}" method="post" class="d-inline">

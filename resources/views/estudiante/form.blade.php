@@ -39,5 +39,19 @@
         value="{{ isset($datos->telefono) ? $datos->telefono : old('telefono') }}"><br>
 </div>
 
+<div class="form-group">
+    <label for="carrera">Carrera:</label><br>
+    <select class="form-control @error('categoria_id') is-invalid @enderror"
+     name="carrera_id"
+     id="carrera">
+
+     <option value="" selected disabled>--Seleccione--</option>
+     @foreach ($carreras as $carrera )
+        <option value="{{$carrera->id }}"
+            {{ old('carrera_id') == $carrera->id ? 'selected' : '' }}
+            >{{ $carrera->descripcion}}</option>
+     @endforeach
+</div>
+
 <input type="submit" value="Guardar" class="btn btn-success">
 <button type="button" class="btn btn-secondary"><a href="{{ url('estudiante/') }}"> Regresar </a></button>
