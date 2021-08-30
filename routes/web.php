@@ -5,6 +5,7 @@ use App\Http\Controllers\CarreraController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\TurnoController;
 
 /*
@@ -34,6 +35,8 @@ Route::resource('estudiante', EstudianteController::class)->middleware('auth');
 Route::resource('turno', TurnoController::class)->middleware('auth');
 
 Route::resource('actividad', ActividadController::class)->middleware('auth');
+
+Route::resource('reporte', ReporteController::class)->middleware('auth');
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 Route::get('/home', [EstudianteController::class,'index'])->name('home');

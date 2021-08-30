@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estudiante;
 use App\Models\Reporte;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        $datos['reportes'] = Reporte::paginate(5);
+        return view('reporte/index', $datos);
     }
 
     /**
@@ -24,7 +26,8 @@ class ReporteController extends Controller
      */
     public function create()
     {
-        //
+        $estudiantes = Estudiante::all();
+        return view('reporte/create',compact('estudiantes'));
     }
 
     /**
@@ -35,7 +38,9 @@ class ReporteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->except('_token');
+        Reporte::insert($datos);
+        return redirect('reporte/')->with('mensaje', 'Reporte agregado con exito');
     }
 
     /**
@@ -55,9 +60,10 @@ class ReporteController extends Controller
      * @param  \App\Models\Reporte  $reporte
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reporte $reporte)
+    public function edit($id)
     {
-        //
+        $datos = Reporte::findOrFail($id);
+        return view('reporte/edit', compact('datos'));
     }
 
     /**
@@ -67,9 +73,14 @@ class ReporteController extends Controller
      * @param  \App\Models\Reporte  $reporte
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reporte $reporte)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token', '_method']);
+
+        Reporte::where('id', '=', $id)->update($datos);
+
+        $datos = Reporte::findOrFail($id);
+        return view('reporte.edit', compact('datos'));
     }
 
     /**
@@ -78,8 +89,9 @@ class ReporteController extends Controller
      * @param  \App\Models\Reporte  $reporte
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reporte $reporte)
+    public function destroy($id)
     {
-        //
+        Reporte::destroy($id);
+        return redirect('reporte/')->with('mensaje', 'Reporte eliminada con exito');
     }
 }

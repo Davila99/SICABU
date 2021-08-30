@@ -41,7 +41,7 @@
 
 <div class="form-group">
     <label for="carrera">Carrera:</label><br>
-    <select class="form-control @error('categoria_id') is-invalid @enderror"
+    <select class="form-control @error('carrera_id') is-invalid @enderror"
      name="carrera_id"
      id="carrera">
 

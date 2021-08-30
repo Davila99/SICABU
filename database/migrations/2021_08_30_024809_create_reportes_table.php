@@ -15,6 +15,11 @@ class CreateReportesTable extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
+            $table->integer('estudiante_id')->foreign('estudiante_id')
+            ->references('id')->on('estudiantes')
+            ->onDelete('set null');
+            $table->string('descripcion')->nullable();
+            $table->string('fecha');
             $table->timestamps();
         });
     }
