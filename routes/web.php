@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\ActividadController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CarreraController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\TurnoController;
 
@@ -37,6 +39,10 @@ Route::resource('turno', TurnoController::class)->middleware('auth');
 Route::resource('actividad', ActividadController::class)->middleware('auth');
 
 Route::resource('reporte', ReporteController::class)->middleware('auth');
+
+Route::resource('area', AreaController::class)->middleware('auth');
+
+Route::resource('permiso', PermisosController::class)->middleware('auth');
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 Route::get('/home', [EstudianteController::class,'index'])->name('home');

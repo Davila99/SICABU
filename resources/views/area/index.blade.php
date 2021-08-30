@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+{{-- @extends('layouts.app') --}}
 
 @section('content')
     <div class="container">
@@ -18,26 +19,26 @@
             </div>
 
         @endif
-        <a href="{{ url('actividad/create') }}" class="btn btn-success"> Nuevo Actividad </a>
+        <a href="{{ url('area/create') }}" class="btn btn-success"> Nuevo Area</a>
         <br>
         <br>
         <table class="table table-dark">
             <thead class="thead-light">
                 <tr>
-                    <th>Carreras</th>
+                    <th>Areas</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
 
             <tbody>
 
-                @foreach ($actividades as $actividad)
+                @foreach ($areas as $area)
 
                     <tr>
-                        <td>{{ $actividad->descripcion }}</td>
-                        <td><a href="{{ url('/actividad/' . $actividad->id . '/edit') }}" class="btn btn-info">
+                        <td>{{ $area->descripcion }}</td>
+                        <td><a href="{{ url('/area/' . $area->id . '/edit') }}" class="btn btn-info">
                                 Editar </a>|
-                            <form action="{{ url('/actividad/' . $actividad->id) }}" method="post" class="d-inline">
+                            <form action="{{ url('/area/' . $area->id) }}" method="post" class="d-inline">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <input type="submit" onclick="return confirm('Estas seguro de eliminar este registro?')"
@@ -49,7 +50,7 @@
                 @endforeach
             </tbody>
         </table>
-        {!! $actividades->links() !!}
+        {!! $areas->links() !!}
     </div>
 @endsection
 @stop

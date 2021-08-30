@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estudiante;
 use App\Models\Permisos;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PermisosController extends Controller
@@ -14,7 +16,10 @@ class PermisosController extends Controller
      */
     public function index()
     {
-        //
+
+        $datos['permisos'] = Permisos::paginate(5);
+        return view('permiso/index', $datos);
+
     }
 
     /**
@@ -24,7 +29,9 @@ class PermisosController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $estudiantes = Estudiante::all();
+        return view('permiso/create',compact('estudiantes'),compact('users'));
     }
 
     /**
@@ -35,7 +42,9 @@ class PermisosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->except('_token');
+        Permisos::insert($datos);
+        return redirect('permiso/')->with('mensaje', 'Permiso agregado con exito');
     }
 
     /**
@@ -55,9 +64,10 @@ class PermisosController extends Controller
      * @param  \App\Models\Permisos  $permisos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permisos $permisos)
+    public function edit($id)
     {
-        //
+        $datos = Permisos::findOrFail($id);
+        return view('permiso/edit', compact('datos'));
     }
 
     /**
@@ -67,9 +77,14 @@ class PermisosController extends Controller
      * @param  \App\Models\Permisos  $permisos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permisos $permisos)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token', '_method']);
+
+        Permisos::where('id', '=', $id)->update($datos);
+
+        $datos = Permisos::findOrFail($id);
+        return view('permiso.edit', compact('datos'));
     }
 
     /**
@@ -78,8 +93,9 @@ class PermisosController extends Controller
      * @param  \App\Models\Permisos  $permisos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permisos $permisos)
+    public function destroy($id)
     {
-        //
+        Permisos::destroy($id);
+        return redirect('permiso/')->with('mensaje', 'Permiso eliminada con exito');
     }
 }

@@ -17,7 +17,7 @@ class UsuarioSeed extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' =>'jarellys',
+            'name' =>'Jarellys Altamirano',
             'email'=> 'jarellys@gmail.com',
             'email_verified_at'=> Carbon::now(),
             'password'=> Hash::make('12345678'),
@@ -25,7 +25,7 @@ class UsuarioSeed extends Seeder
             'updated_at'=> Carbon::now()
         ]);
         DB::table('users')->insert([
-            'name' =>'Eliseo',
+            'name' =>'Eliseo Antonio Davila Ojeda',
             'email'=> 'davilaeliseo453@gmail.com',
             'email_verified_at'=> Carbon::now(),
             'password'=> Hash::make('12345678'),

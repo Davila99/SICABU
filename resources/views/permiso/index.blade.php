@@ -6,6 +6,8 @@
 
 @section('content')
 
+{{--  @extends('layouts.app')  --}}
+
 @section('content')
     <div class="container">
 
@@ -18,26 +20,37 @@
             </div>
 
         @endif
-        <a href="{{ url('actividad/create') }}" class="btn btn-success"> Nuevo Actividad </a>
+        <a href="{{ url('permiso/create') }}" class="btn btn-success"> Nuevo estudiante </a>
         <br>
         <br>
         <table class="table table-dark">
             <thead class="thead-light">
                 <tr>
-                    <th>Carreras</th>
+                    <th>Estudiante</th>
+                    <th>Objetivo de Salida</th>
+                    <th>Fecha Salida</th>
+                    <th>Hora Salida</th>
+                    <th>Fecha Entrada</th>
+                    <th>Hora Entrada</th>
+                    <th>Autorizado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
 
             <tbody>
 
-                @foreach ($actividades as $actividad)
+                @foreach ($permisos as $permiso)
 
-                    <tr>
-                        <td>{{ $actividad->descripcion }}</td>
-                        <td><a href="{{ url('/actividad/' . $actividad->id . '/edit') }}" class="btn btn-info">
+                        <td>{{ $permiso->estudiante->nombre}}</td>
+                        <td>{{ $permiso->objetivo }}</td>
+                        <td>{{ $permiso->fecha_salida }}</td>
+                        <td>{{ $permiso->hora_salida }}</td>
+                        <td>{{ $permiso->fecha_entrada }}</td>
+                        <td>{{ $permiso->hora_entrada }}</td>
+                        <td>{{ $permiso->user->name }}</td>
+                        <td><a href="{{ url('/permiso/' . $permiso->id . '/edit') }}" class="btn btn-info">
                                 Editar </a>|
-                            <form action="{{ url('/actividad/' . $actividad->id) }}" method="post" class="d-inline">
+                            <form action="{{ url('/permiso/' . $permiso->id) }}" method="post" class="d-inline">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <input type="submit" onclick="return confirm('Estas seguro de eliminar este registro?')"
@@ -49,8 +62,9 @@
                 @endforeach
             </tbody>
         </table>
-        {!! $actividades->links() !!}
+        {!! $permisos->links() !!}
     </div>
+
 @endsection
 @stop
 

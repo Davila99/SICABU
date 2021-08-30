@@ -14,7 +14,8 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
+        $datos['areas'] = Area::paginate(5);
+        return view('area/index', $datos);
     }
 
     /**
@@ -24,7 +25,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        //
+        return view('area/create');
     }
 
     /**
@@ -35,7 +36,9 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->except('_token');
+        Area::insert($datos);
+        return redirect('area/')->with('mensaje', 'Area agregado con exito');
     }
 
     /**
@@ -55,9 +58,11 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function edit(Area $area)
+    public function edit($id)
     {
-        //
+        $datos = Area::findOrFail($id);
+        return view('area/edit', compact('datos'));
+
     }
 
     /**
@@ -67,9 +72,14 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Area $area)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token', '_method']);
+
+        Area::where('id', '=', $id)->update($datos);
+
+        $datos = Area::findOrFail($id);
+        return view('area.edit', compact('datos'));
     }
 
     /**
@@ -78,8 +88,9 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
+    public function destroy($id)
     {
-        //
+        Area::destroy($id);
+        return redirect('area/')->with('mensaje', 'Area eliminada con exito');
     }
 }

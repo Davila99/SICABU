@@ -1,4 +1,4 @@
-{{--  <h1>{{ $titulo }} Turno</h1>  --}}
+{{--  <h1>{{ $titulo }} Area</h1>  --}}
 
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
@@ -11,7 +11,7 @@
 @endif
 
 <div class="form-group">
-    <label for="descripcion">Asignacion de la area:</label><br>
+    <label for="descripcion">Nombre del area:</label><br>
     <input type="text" class="form-control" id="descripcion" name="descripcion"
         value="{{ isset($datos->descripcion) ? $datos->descripcion : old('descripcion') }}"><br>
 </div>
@@ -19,4 +19,4 @@
 
 
 <input type="submit" value="Guardar" class="btn btn-success">
-<button type="button" class="btn btn-secondary"><a href="{{ url('turno/') }}"> Regresar </a></button>
+<button type="button" class="btn btn-secondary"><a href="{{ url('area/') }}"> Regresar </a></button>
