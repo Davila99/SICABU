@@ -30,11 +30,14 @@
      id="estudiante">
 
      <option value="" selected disabled>--Seleccione--</option>
+     @isset($carreras)
      @foreach ($estudiantes as $estudiante )
         <option value="{{$estudiante->id }}"
             {{ old('estudiante_id') == $estudiante->id ? 'selected' : '' }}
             >{{ $estudiante->nombre}}</option>
      @endforeach
+     @endisset
+
 </div>
 
 

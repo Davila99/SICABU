@@ -46,11 +46,14 @@
      id="carrera">
 
      <option value="" selected disabled>--Seleccione--</option>
+     @isset($carreras)
      @foreach ($carreras as $carrera )
         <option value="{{$carrera->id }}"
             {{ old('carrera_id') == $carrera->id ? 'selected' : '' }}
             >{{ $carrera->descripcion}}</option>
      @endforeach
+     @endisset
+
 </div>
 
 <input type="submit" value="Guardar" class="btn btn-success">

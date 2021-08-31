@@ -17,11 +17,14 @@
      id="estudiante">
 
      <option value="" selected disabled>--Seleccione--</option>
+     @isset($estudiantes)
      @foreach ($estudiantes as $estudiante )
         <option value="{{$estudiante->id }}"
             {{ old('estudiante_id') == $estudiante->id ? 'selected' : '' }}
             >{{ $estudiante->nombre}}</option>
      @endforeach
+     @endisset
+
 </div>
 
 <div class="form-group">
@@ -58,11 +61,14 @@
      id="user">
 
      <option value="" selected disabled>--Seleccione--</option>
+     @isset($users)
      @foreach ($users as $user )
         <option value="{{$user->id }}"
             {{ old('user_id') == $user->id ? 'selected' : '' }}
             >{{ $user->name}}</option>
      @endforeach
+     @endisset
+
 </div>
 
 <input type="submit" value="Guardar" class="btn btn-success">

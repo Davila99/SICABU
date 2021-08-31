@@ -20,6 +20,7 @@
             </div>
 
         @endif
+        <br>
         <a href="{{ url('turno/create') }}" class="btn btn-success"> Nuevo Turno</a>
         <br>
         <br>

@@ -20,6 +20,7 @@
             </div>
 
         @endif
+        <br>
         <a href="{{ url('reporte/create') }}" class="btn btn-success"> Nuevo Reporte </a>
         <br>
         <br>

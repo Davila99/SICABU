@@ -20,6 +20,21 @@
             </div>
 
         @endif
+        <br>
+            <div class="col-xl-12">
+                <form action="{{ route('estudiante.index') }}" method="get">
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" name="texto" value="">
+                        </div>
+                        <div class="col-auto">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <br>
         <a href="{{ url('estudiante/create') }}" class="btn btn-success"> Nuevo estudiante </a>
         <br>
         <br>

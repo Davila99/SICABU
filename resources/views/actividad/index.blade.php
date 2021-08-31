@@ -18,6 +18,7 @@
             </div>
 
         @endif
+        <br>
         <a href="{{ url('actividad/create') }}" class="btn btn-success"> Nuevo Actividad </a>
         <br>
         <br>

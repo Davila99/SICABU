@@ -146,7 +146,7 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -246,19 +246,56 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'REGISTROS'],
         [
-            'text' => 'Dashboard',
-            'route'  => 'home',
-            'icon'   => 'fas fa-fw fa-home',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text'        => 'Estudiantes',
+            'url'         => 'estudiante',
+            'icon'        => 'fas fa-fw fa-user',
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        [
+            'text'        => 'Permisos',
+            'url'         => 'permiso',
+            'icon'        => 'fas fa-fw fa-user',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Reportes',
+            'url'         => 'reporte',
+            'icon'        => 'fas fa-fw fa-user',
+            'label_color' => 'success',
+        ],
+        [
+            'text'    => 'CATALOGOS',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text'        => 'Turnos',
+                    'url'         => 'turno',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Carreras',
+                    'url'         => 'carrera',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Areas',
+                    'url'         => 'area',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Actividades',
+                    'url'         => 'actividad',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label_color' => 'success',
+                ],
+            ],
+        ],
+        ['header' => 'HERRAMIENTAS'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -268,60 +305,6 @@ return [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

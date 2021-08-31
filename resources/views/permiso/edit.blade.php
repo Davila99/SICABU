@@ -5,7 +5,7 @@
         <form action="{{ url('estudiante/' . $datos->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             {{ method_field('PATCH') }}
-            @include('estudiante.form')
+            @include('permiso.form')
         </form>
     </div>
 

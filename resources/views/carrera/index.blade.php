@@ -19,6 +19,7 @@
             </div>
 
         @endif
+        <br>
         <a href="{{ url('carrera/create') }}" class="btn btn-success"> Nuevo Carrera </a>
         <br>
         <br>

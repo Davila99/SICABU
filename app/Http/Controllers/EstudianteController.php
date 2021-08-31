@@ -21,7 +21,7 @@ class EstudianteController extends Controller
             ->orderBy('nombre', 'asc')
             ->paginate(3);
 
-        return view('estudiante/index', $datos);
+        return view('estudiante/index', $datos,$datos);
     }
 
     /**

@@ -20,7 +20,8 @@
             </div>
 
         @endif
-        <a href="{{ url('permiso/create') }}" class="btn btn-success"> Nuevo estudiante </a>
+        <br>
+        <a href="{{ url('permiso/create') }}" class="btn btn-success"> Nuevo Permiso </a>
         <br>
         <br>
         <table class="table table-dark">

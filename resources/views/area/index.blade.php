@@ -19,6 +19,7 @@
             </div>
 
         @endif
+        <br>
         <a href="{{ url('area/create') }}" class="btn btn-success"> Nuevo Area</a>
         <br>
         <br>
