@@ -1,3 +1,4 @@
+
 {{--  <h1>{{ $titulo }} Estudiante</h1>  --}}
 
 @if (count($errors) > 0)
@@ -32,6 +33,7 @@
     <input type="text" class="form-control" id="objetivo" name="objetivo"
         value="{{ isset($datos->objetivo) ? $datos->objetivo : old('objetivo')}}"><br>
 </div>
+
 <div class="form-group">
     <label for="fecha_salida">Fecha Salida:</label><br>
     <input type="date" class="form-control" id="fecha_salida" name="fecha_salida"
