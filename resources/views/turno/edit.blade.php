@@ -5,7 +5,7 @@
         <form action="{{ url('area/' . $datos->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             {{ method_field('PATCH') }}
-            @include('area.form')
+            @include('turno.form')
         </form>
     </div>
 @endsection
